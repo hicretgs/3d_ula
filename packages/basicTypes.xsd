@@ -1,0 +1,290 @@
+<?xml  version='1.0' encoding='utf-8' ?>
+<xs:schema targetNamespace="http://www.opengis.net/gml/3.2" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" elementFormDefault="qualified" version="3.2.1.2">
+	<xs:annotation>
+		<xs:documentation>See ISO/DIS 19136 8.2.
+W3C XML Schema provides a set of built-in "simple" types which define methods for representing values as literals without internal markup.  These are described in W3C XML Schema Part 2:2001.  Because GML is an XML encoding in which instances are described using XML Schema, these simple types shall be used as far as possible and practical for the representation of data types.  W3C XML Schema also provides methods for defining 
+-	new simple types by restriction and combination of the built-in types, and 
+-	complex types, with simple content, but which also have XML attributes.  
+In many places where a suitable built-in simple type is not available, simple content types derived using the XML Schema mechanisms are used for the representation of data types in GML.  
+A set of these simple content types that are required by several GML components are defined in the basicTypes schema, as well as some elements based on them. These are primarily based around components needed to record amounts, counts, flags and terms, together with support for exceptions or null values.
+
+GML is an OGC Standard.
+Copyright (c) 2007,2010 Open Geospatial Consortium.
+To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
+		</xs:documentation>
+	</xs:annotation>
+	<xs:simpleType name="anyURI">
+		<xs:restriction base="xs:anyURI"/>
+	</xs:simpleType>
+	<xs:simpleType name="anyURI">
+		<xs:restriction base="xs:anyURI"/>
+	</xs:simpleType>
+	<xs:simpleType name="anyURI">
+		<xs:restriction base="xs:anyURI"/>
+	</xs:simpleType>
+	<xs:simpleType name="anyURI">
+		<xs:restriction base="xs:anyURI"/>
+	</xs:simpleType>
+	<xs:simpleType name="anyURI">
+		<xs:restriction base="xs:anyURI"/>
+	</xs:simpleType>
+	<xs:simpleType name="anyURI">
+		<xs:restriction base="xs:anyURI"/>
+	</xs:simpleType>
+	<xs:simpleType name="boolean">
+		<xs:restriction base="xs:boolean"/>
+	</xs:simpleType>
+	<xs:simpleType name="booleanList">
+		<xs:annotation>
+			<xs:documentation>A type for a list of values of the respective simple type.</xs:documentation>
+		</xs:annotation>
+		<xs:list itemType="xs:boolean"/>
+	</xs:simpleType>
+	<xs:simpleType name="booleanOrNilReason">
+		<xs:annotation>
+			<xs:documentation>Extension to the respective XML Schema built-in simple type to allow a choice of either a value of the built-in simple type or a reason for a nil value.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="gml:anyURI gml:boolean NilReasonEnumeration"/>
+	</xs:simpleType>
+	<xs:simpleType name="booleanOrNilReasonList">
+		<xs:annotation>
+			<xs:documentation>A type for a list of values of the respective simple type.</xs:documentation>
+		</xs:annotation>
+		<xs:list itemType="gml:booleanOrNilReason"/>
+	</xs:simpleType>
+	<xs:simpleType name="double">
+		<xs:restriction base="xs:double"/>
+	</xs:simpleType>
+	<xs:simpleType name="doubleList">
+		<xs:annotation>
+			<xs:documentation>A type for a list of values of the respective simple type.</xs:documentation>
+		</xs:annotation>
+		<xs:list itemType="xs:double"/>
+	</xs:simpleType>
+	<xs:simpleType name="doubleOrNilReason">
+		<xs:annotation>
+			<xs:documentation>Extension to the respective XML Schema built-in simple type to allow a choice of either a value of the built-in simple type or a reason for a nil value.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="gml:anyURI gml:double NilReasonEnumeration"/>
+	</xs:simpleType>
+	<xs:simpleType name="doubleOrNilReasonList">
+		<xs:annotation>
+			<xs:documentation>A type for a list of values of the respective simple type.</xs:documentation>
+		</xs:annotation>
+		<xs:list itemType="gml:doubleOrNilReason"/>
+	</xs:simpleType>
+	<xs:simpleType name="integer">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="integerList">
+		<xs:annotation>
+			<xs:documentation>A type for a list of values of the respective simple type.</xs:documentation>
+		</xs:annotation>
+		<xs:list itemType="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="integerOrNilReason">
+		<xs:annotation>
+			<xs:documentation>Extension to the respective XML Schema built-in simple type to allow a choice of either a value of the built-in simple type or a reason for a nil value.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="gml:anyURI gml:integer NilReasonEnumeration"/>
+	</xs:simpleType>
+	<xs:simpleType name="integerOrNilReasonList">
+		<xs:annotation>
+			<xs:documentation>A type for a list of values of the respective simple type.</xs:documentation>
+		</xs:annotation>
+		<xs:list itemType="gml:integerOrNilReason"/>
+	</xs:simpleType>
+	<xs:simpleType name="Name">
+		<xs:restriction base="xs:Name"/>
+	</xs:simpleType>
+	<xs:simpleType name="NameList">
+		<xs:annotation>
+			<xs:documentation>A type for a list of values of the respective simple type.</xs:documentation>
+		</xs:annotation>
+		<xs:list itemType="xs:Name"/>
+	</xs:simpleType>
+	<xs:simpleType name="NameOrNilReason">
+		<xs:annotation>
+			<xs:documentation>Extension to the respective XML Schema built-in simple type to allow a choice of either a value of the built-in simple type or a reason for a nil value.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="gml:anyURI gml:Name NilReasonEnumeration"/>
+	</xs:simpleType>
+	<xs:simpleType name="NameOrNilReasonList">
+		<xs:annotation>
+			<xs:documentation>A type for a list of values of the respective simple type.</xs:documentation>
+		</xs:annotation>
+		<xs:list itemType="gml:NameOrNilReason"/>
+	</xs:simpleType>
+	<xs:simpleType name="NCNameList">
+		<xs:annotation>
+			<xs:documentation>A type for a list of values of the respective simple type.</xs:documentation>
+		</xs:annotation>
+		<xs:list itemType="xs:NCName"/>
+	</xs:simpleType>
+	<xs:simpleType name="NilReasonType">
+		<xs:annotation>
+			<xs:documentation>gml:NilReasonType defines a content model that allows recording of an explanation for a void value or other exception.
+gml:NilReasonType is a union of the following enumerated values:
+-	inapplicable there is no value
+-	missing the correct value is not readily available to the sender of this data. Furthermore, a correct value may not exist
+-	template the value will be available later
+-	unknown the correct value is not known to, and not computable by, the sender of this data. However, a correct value probably exists
+-	withheld the value is not divulged
+-	other:text other brief explanation, where text is a string of two or more characters with no included spaces
+and
+-	anyURI which should refer to a resource which describes the reason for the exception
+A particular community may choose to assign more detailed semantics to the standard values provided. Alternatively, the URI method enables a specific or more complete explanation for the absence of a value to be provided elsewhere and indicated by-reference in an instance document.
+gml:NilReasonType is used as a member of a union in a number of simple content types where it is necessary to permit a value from the NilReasonType union as an alternative to the primary type.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="gml:anyURI NilReasonEnumeration"/>
+	</xs:simpleType>
+	<xs:simpleType name="QNameList">
+		<xs:annotation>
+			<xs:documentation>A type for a list of values of the respective simple type.</xs:documentation>
+		</xs:annotation>
+		<xs:list itemType="xs:QName"/>
+	</xs:simpleType>
+	<xs:simpleType name="SignType">
+		<xs:annotation>
+			<xs:documentation>gml:SignType is a convenience type with values "+" (plus) and "-" (minus).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="-"/>
+			<xs:enumeration value="+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="string">
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	<xs:simpleType name="stringOrNilReason">
+		<xs:annotation>
+			<xs:documentation>Extension to the respective XML Schema built-in simple type to allow a choice of either a value of the built-in simple type or a reason for a nil value.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="gml:anyURI gml:string NilReasonEnumeration"/>
+	</xs:simpleType>
+	<xs:simpleType name="UomIdentifier">
+		<xs:annotation>
+			<xs:documentation>The simple type gml:UomIdentifer defines the syntax and value space of the unit of measure identifier.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="UomSymbol UomURI"/>
+	</xs:simpleType>
+	<xs:simpleType name="UomSymbol">
+		<xs:annotation>
+			<xs:documentation>This type specifies a character string of length at least one, and restricted such that it must not contain any of the following characters: ":" (colon), " " (space), (newline), (carriage return), (tab). This allows values corresponding to familiar abbreviations, such as "kg", "m/s", etc. 
+It is recommended that the symbol be an identifier for a unit of measure as specified in the "Unified Code of Units of Measure" (UCUM) (http://aurora.regenstrief.org/UCUM). This provides a set of symbols and a grammar for constructing identifiers for units of measure that are unique, and may be easily entered with a keyboard supporting the limited character set known as 7-bit ASCII. ISO 2955 formerly provided a specification with this scope, but was withdrawn in 2001. UCUM largely follows ISO 2955 with modifications to remove ambiguities and other problems.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[^: \n\r\t]+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UomURI">
+		<xs:annotation>
+			<xs:documentation>This type specifies a URI, restricted such that it must start with one of the following sequences: "#", "./", "../", or a string of characters followed by a ":". These patterns ensure that the most common URI forms are supported, including absolute and relative URIs and URIs that are simple fragment identifiers, but prohibits certain forms of relative URI that could be mistaken for unit of measure symbol . 
+NOTE	It is possible to re-write such a relative URI to conform to the restriction (e.g. "./m/s").
+In an instance document, on elements of type gml:MeasureType the mandatory uom attribute shall carry a value corresponding to either 
+-	a conventional unit of measure symbol,
+-	a link to a definition of a unit of measure that does not have a conventional symbol, or when it is desired to indicate a precise or variant definition.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:anyURI">
+			<xs:pattern value="([a-zA-Z][a-zA-Z0-9\-\+\.]*:|\.\./|\./|#).*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="CodeListType" type="gml:CodeListType"/>
+	<xs:complexType name="CodeListType">
+		<xs:annotation>
+			<xs:documentation>gml:CodeListType provides for lists of terms. The values in an instance element shall all be valid according to the rules of the dictionary, classification scheme, or authority identified by the value of its codeSpace attribute.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="gml:NameList">
+				<xs:attribute name="codeSpace" use="optional" type="gml:anyURI"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="CodeOrNilReasonListType" type="gml:CodeOrNilReasonListType"/>
+	<xs:complexType name="CodeOrNilReasonListType">
+		<xs:annotation>
+			<xs:documentation>gml:CodeOrNilReasonListType provides for lists of terms. The values in an instance element shall all be valid according to the rules of the dictionary, classification scheme, or authority identified by the value of its codeSpace attribute. An instance element may also include embedded values from NilReasonType. It is intended to be used in situations where a term or classification is expected, but the value may be absent for some reason.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="gml:NameOrNilReasonList">
+				<xs:attribute name="codeSpace" use="optional" type="gml:anyURI"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="CodeType" type="gml:CodeType"/>
+	<xs:complexType name="CodeType">
+		<xs:annotation>
+			<xs:documentation>gml:CodeType is a generalized type to be used for a term, keyword or name.
+It adds a XML attribute codeSpace to a term, where the value of the codeSpace attribute (if present) shall indicate a dictionary, thesaurus, classification scheme, authority, or pattern for the term.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="gml:string">
+				<xs:attribute name="codeSpace" use="optional" type="gml:anyURI"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="CodeWithAuthorityType" type="gml:CodeWithAuthorityType"/>
+	<xs:complexType name="CodeWithAuthorityType">
+		<xs:annotation>
+			<xs:documentation>gml:CodeWithAuthorityType requires that the codeSpace attribute is provided in an instance.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="gml:CodeType">
+				<xs:sequence/>
+				<xs:attribute name="codeSpace" use="required" type="gml:anyURI"/>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="CoordinatesType" type="gml:CoordinatesType"/>
+	<xs:complexType name="CoordinatesType">
+		<xs:annotation>
+			<xs:documentation>This type is deprecated for tuples with ordinate values that are numbers.
+CoordinatesType is a text string, intended to be used to record an array of tuples or coordinates. 
+While it is not possible to enforce the internal structure of the string through schema validation, some optional attributes have been provided in previous versions of GML to support a description of the internal structure. These attributes are deprecated. The attributes were intended to be used as follows:
+Decimal	symbol used for a decimal point (default="." a stop or period)
+cs        	symbol used to separate components within a tuple or coordinate string (default="," a comma)
+ts        	symbol used to separate tuples or coordinate strings (default=" " a space)
+Since it is based on the XML Schema string type, CoordinatesType may be used in the construction of tables of tuples or arrays of tuples, including ones that contain mixed text and numeric values.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="gml:string">
+				<xs:attribute name="cs" use="optional" default="," type="gml:string"/>
+				<xs:attribute name="decimal" use="optional" default="." type="gml:string"/>
+				<xs:attribute name="ts" use="optional" default=" " type="gml:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="MeasureListType" type="gml:MeasureListType"/>
+	<xs:complexType name="MeasureListType">
+		<xs:annotation>
+			<xs:documentation>gml:MeasureListType provides for a list of quantities.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="gml:doubleList">
+				<xs:attribute name="uom" use="required" type="gml:UomIdentifier"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="MeasureOrNilReasonListType" type="gml:MeasureOrNilReasonListType"/>
+	<xs:complexType name="MeasureOrNilReasonListType">
+		<xs:annotation>
+			<xs:documentation>gml:MeasureOrNilReasonListType provides for a list of quantities. An instance element may also include embedded values from NilReasonType. It is intended to be used in situations where a value is expected, but the value may be absent for some reason.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="gml:doubleOrNilReasonList">
+				<xs:attribute name="uom" use="required" type="gml:UomIdentifier"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="MeasureType" type="gml:MeasureType"/>
+	<xs:complexType name="MeasureType">
+		<xs:annotation>
+			<xs:documentation>gml:MeasureType supports recording an amount encoded as a value of XML Schema double, together with a units of measure indicated by an attribute uom, short for "units Of measure". The value of the uom attribute identifies a reference system for the amount, usually a ratio or interval scale.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="gml:double">
+				<xs:attribute name="uom" use="required" type="gml:UomIdentifier"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+</xs:schema>

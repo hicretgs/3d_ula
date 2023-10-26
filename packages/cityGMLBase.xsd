@@ -1,0 +1,44 @@
+<?xml  version='1.0' encoding='utf-8' ?>
+<xs:schema targetNamespace="http://www.opengis.net/citygml/2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="2.0.0">
+	<xs:annotation>
+		<xs:documentation>
+    CityGML is an OGC Standard.
+    Copyright (c) 2012 Open Geospatial Consortium.
+    To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
+		</xs:documentation>
+	</xs:annotation>
+	<xs:import namespace="http://www.opengis.net/citygml/building/2.0" schemaLocation="D:\BELGELER\Google Drive\hicretsurmeneli@gmail.com\Atatürk Üniversitesi\Makale çalışmaları\İsveç ortak makaler\1.Revizyon\EA cizimler xsd\ogc_citygml\building\2.0\building.xsd"/>
+	<xs:import namespace="http://www.opengis.net/citygml/building/2.0" schemaLocation="D:\BELGELER\Google Drive\hicretsurmeneli@gmail.com\Atatürk Üniversitesi\Makale çalışmaları\İsveç ortak makaler\1.Revizyon\EA cizimler xsd\ogc_citygml\building\2.0\building.xsd"/>
+	<xs:element name="_CityObject"/>
+	<xs:element name="_Site"/>
+	<xs:element name="cityObjectMember"/>
+	<xs:element name="CityModel" type="CityModel"/>
+	<xs:complexType name="CityModel">
+		<xs:annotation>
+			<xs:documentation>Type describing the "root" element of any city model file. It is a collection whose members are restricted
+				to be features of a city model. All features are included as cityObjectMember. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:element name="ExternalObjectReferenceType" type="ExternalObjectReferenceType"/>
+	<xs:complexType name="ExternalObjectReferenceType">
+		<xs:choice>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="uri" type="xs:anyURI" minOccurs="1" maxOccurs="1"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:element name="ExternalReferenceType" type="ExternalReferenceType"/>
+	<xs:complexType name="ExternalReferenceType">
+		<xs:annotation>
+			<xs:documentation>Type describing the reference to an corresponding object in an other information system, for example in
+				the german cadastre ALKIS, the german topographic information system or ATKIS, or the OS MasterMap. The reference consists
+				of the name of the external information system, represented by an URI, and the reference of the external object, given
+				either by a string or by an URI. If the informationSystem element is missing in the ExternalReference, the
+				ExternalObjectReference must be an URI, which contains an indication of the informationSystem.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="informationSystem" type="xs:anyURI" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="externalObject" type="ExternalObjectReferenceType" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

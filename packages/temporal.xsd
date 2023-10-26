@@ -1,0 +1,254 @@
+<?xml  version='1.0' encoding='utf-8' ?>
+<xs:schema targetNamespace="http://www.opengis.net/gml/3.2" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" elementFormDefault="qualified" version="3.2.1.2">
+	<xs:annotation>
+		<xs:documentation>See ISO/DIS 19136 15.2.
+The GML temporal schemas include components for describing temporal geometry and topology, temporal reference systems, and the temporal characteristics of geographic data. The model underlying the representation constitutes a profile of the conceptual schema described in ISO 19108. The underlying spatiotemporal model strives to accommodate both feature-level and attribute-level time stamping; basic support for tracking moving objects is also included. 
+Time is measured on two types of scales: interval and ordinal.  An interval scale offers a basis for measuring duration, an ordinal scale provides information only about relative position in time.
+Two other ISO standards are relevant to describing temporal objects:  ISO 8601 describes encodings for time instants and time periods, as text strings with particular structure and punctuation; ISO 11404 provides a detailed description of time intervals as part of a general discussion of language independent datatypes.  
+The temporal schemas cover two interrelated topics and provide basic schema components for representing temporal instants and periods, temporal topology, and reference systems; more specialized schema components defines components used for dynamic features. Instances of temporal geometric types are used as values for the temporal properties of geographic features.
+
+GML is an OGC Standard.
+Copyright (c) 2007,2010 Open Geospatial Consortium.
+To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
+		</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="D:\BELGELER\Google Drive\hicretsurmeneli@gmail.com\Atatürk Üniversitesi\Makale çalışmaları\İsveç ortak makaler\1.Revizyon\EA cizimler xsd\gml\3.2.1.2\gmlBase.xsd"/>
+	<xs:element name="duration" type="xs:duration">
+		<xs:annotation>
+			<xs:documentation>gml:duration conforms to the ISO 8601 syntax for temporal length as implemented by the XML Schema duration type.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="timeInterval" type="gml:TimeIntervalLengthType">
+		<xs:annotation>
+			<xs:documentation> gml:timeInterval conforms to ISO 11404 which is based on floating point values for temporal length.
+ISO 11404 syntax specifies the use of a positiveInteger together with appropriate values for radix and factor. The resolution of the time interval is to one radix ^(-factor) of the specified time unit.
+The value of the unit is either selected from the units for time intervals from ISO 31-1:1992, or is another suitable unit.  The encoding is defined for GML in gml:TimeUnitType. The second component of this union type provides a method for indicating time units other than the six standard units given in the enumeration.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="validTime" type="gml:TimePrimitivePropertyType">
+		<xs:annotation>
+			<xs:documentation>gml:validTime is a convenience property element.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="anyURI">
+		<xs:restriction base="xs:anyURI"/>
+	</xs:simpleType>
+	<xs:simpleType name="dateTime">
+		<xs:restriction base="xs:dateTime"/>
+	</xs:simpleType>
+	<xs:simpleType name="decimal">
+		<xs:restriction base="xs:decimal"/>
+	</xs:simpleType>
+	<xs:simpleType name="time">
+		<xs:restriction base="xs:time"/>
+	</xs:simpleType>
+	<xs:simpleType name="TimeIndeterminateValueType">
+		<xs:annotation>
+			<xs:documentation>These values are interpreted as follows: 
+-	"unknown" indicates that no specific value for temporal position is provided.
+-	"now" indicates that the specified value shall be replaced with the current temporal position whenever the value is accessed.
+-	"before" indicates that the actual temporal position is unknown, but it is known to be before the specified value.
+-	"after" indicates that the actual temporal position is unknown, but it is known to be after the specified value.
+A value for indeterminatePosition may 
+-	be used either alone, or 
+-	qualify a specific value for temporal position.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="after"/>
+			<xs:enumeration value="before"/>
+			<xs:enumeration value="now"/>
+			<xs:enumeration value="unknown"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TimePositionUnion">
+		<xs:annotation>
+			<xs:documentation>The simple type gml:TimePositionUnion is a union of XML Schema simple types which instantiate the subtypes for temporal position described in ISO 19108.
+ An ordinal era may be referenced via URI.  A decimal value may be used to indicate the distance from the scale origin .  time is used for a position that recurs daily (see ISO 19108:2002 5.4.4.2).
+ Finally, calendar and clock forms that support the representation of time in systems based on years, months, days, hours, minutes and seconds, in a notation following ISO 8601, are assembled by gml:CalDate</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="gml:anyURI gml:dateTime gml:decimal gml:time CalDate"/>
+	</xs:simpleType>
+	<xs:simpleType name="TimeUnitType">
+		<xs:union>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="year"/>
+					<xs:enumeration value="month"/>
+					<xs:enumeration value="day"/>
+					<xs:enumeration value="hour"/>
+					<xs:enumeration value="minute"/>
+					<xs:enumeration value="second"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:pattern value="other:\w{2,}"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+	<xs:element name="AbstractTimeComplex" type="gml:AbstractTimeComplex"/>
+	<xs:complexType name="AbstractTimeComplex" abstract="true">
+		<xs:complexContent>
+			<xs:extension base="gml:AbstractTimeObject">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="AbstractTimeGeometricPrimitive" type="gml:AbstractTimeGeometricPrimitive"/>
+	<xs:complexType name="AbstractTimeGeometricPrimitive" abstract="true">
+		<xs:complexContent>
+			<xs:extension base="gml:AbstractTimePrimitive">
+				<xs:sequence/>
+				<xs:attribute name="frame" use="optional" default="#ISO-8601" type="gml:anyURI"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="AbstractTimeObject" type="gml:AbstractTimeObject"/>
+	<xs:complexType name="AbstractTimeObject" abstract="true">
+		<xs:complexContent>
+			<xs:extension base="gml:AbstractGML">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="AbstractTimePrimitive" type="gml:AbstractTimePrimitive"/>
+	<xs:complexType name="AbstractTimePrimitive" abstract="true">
+		<xs:complexContent>
+			<xs:extension base="gml:AbstractTimeObject">
+				<xs:sequence>
+					<xs:element name="relatedTime" type="gml:RelatedTimeType" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="RelatedTimeType" type="gml:RelatedTimeType"/>
+	<xs:complexType name="RelatedTimeType">
+		<xs:annotation>
+			<xs:documentation>gml:RelatedTimeType provides a content model for indicating the relative position of an arbitrary member of the substitution group whose head is gml:AbstractTimePrimitive. It extends the generic gml:TimePrimitivePropertyType with an XML attribute relativePosition, whose value is selected from the set of 13 temporal relationships identified by Allen (1983)</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="gml:TimePrimitivePropertyType">
+				<xs:sequence/>
+				<xs:attribute name="relativePosition" use="optional">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="Before"/>
+							<xs:enumeration value="After"/>
+							<xs:enumeration value="Begins"/>
+							<xs:enumeration value="Ends"/>
+							<xs:enumeration value="During"/>
+							<xs:enumeration value="Equals"/>
+							<xs:enumeration value="Contains"/>
+							<xs:enumeration value="Overlaps"/>
+							<xs:enumeration value="Meets"/>
+							<xs:enumeration value="OverlappedBy"/>
+							<xs:enumeration value="MetBy"/>
+							<xs:enumeration value="BegunBy"/>
+							<xs:enumeration value="EndedBy"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="TimeInstant" type="gml:TimeInstant"/>
+	<xs:complexType name="TimeInstant">
+		<xs:complexContent>
+			<xs:extension base="gml:AbstractTimeGeometricPrimitive">
+				<xs:sequence>
+					<xs:element ref="gml:timePosition" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="TimeInstantPropertyType" type="gml:TimeInstantPropertyType"/>
+	<xs:complexType name="TimeInstantPropertyType">
+		<xs:annotation>
+			<xs:documentation>gml:TimeInstantPropertyType provides for associating a gml:TimeInstant with an object.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="0">
+			<xs:element ref="gml:TimeInstant" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<xs:attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</xs:complexType>
+	<xs:element name="TimeIntervalLengthType" type="gml:TimeIntervalLengthType"/>
+	<xs:complexType name="TimeIntervalLengthType">
+		<xs:simpleContent>
+			<xs:extension base="gml:decimal">
+				<xs:attribute name="factor" use="optional" type="xs:integer"/>
+				<xs:attribute name="radix" use="optional" type="xs:positiveInteger"/>
+				<xs:attribute name="unit" use="required" type="gml:TimeUnitType"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="TimePeriod" type="gml:TimePeriod"/>
+	<xs:complexType name="TimePeriod">
+		<xs:complexContent>
+			<xs:extension base="gml:AbstractTimeGeometricPrimitive">
+				<xs:sequence>
+					<xs:choice minOccurs="1" maxOccurs="1">
+						<xs:element name="begin" type="gml:TimeInstantPropertyType" minOccurs="1" maxOccurs="1"/>
+						<xs:element name="beginPosition" type="gml:timePosition" minOccurs="1" maxOccurs="1"/>
+					</xs:choice>
+					<xs:choice minOccurs="1" maxOccurs="1">
+						<xs:element name="end" type="gml:TimeInstantPropertyType" minOccurs="1" maxOccurs="1"/>
+						<xs:element name="endPosition" type="gml:timePosition" minOccurs="1" maxOccurs="1"/>
+					</xs:choice>
+					<xs:group ref="gml:timeLength" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="TimePeriodPropertyType" type="gml:TimePeriodPropertyType"/>
+	<xs:complexType name="TimePeriodPropertyType">
+		<xs:annotation>
+			<xs:documentation>gml:TimePeriodPropertyType provides for associating a gml:TimePeriod with an object.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="0">
+			<xs:element ref="gml:TimePeriod" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<xs:attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</xs:complexType>
+	<xs:element name="timePosition" type="gml:timePosition"/>
+	<xs:complexType name="timePosition">
+		<xs:annotation>
+			<xs:documentation>The method for identifying a temporal position is specific to each temporal reference system.  gml:TimePositionType supports the description of temporal position according to the subtypes described in ISO 19108.
+Values based on calendars and clocks use lexical formats that are based on ISO 8601, as described in XML Schema Part 2:2001. A decimal value may be used with coordinate systems such as GPS time or UNIX time. A URI may be used to provide a reference to some era in an ordinal reference system . 
+In common with many of the components modelled as data types in the ISO 19100 series of International Standards, the corresponding GML component has simple content. However, the content model gml:TimePositionType is defined in several steps.
+Three XML attributes appear on gml:TimePositionType:
+A time value shall be associated with a temporal reference system through the frame attribute that provides a URI reference that identifies a description of the reference system. Following ISO 19108, the Gregorian calendar with UTC is the default reference system, but others may also be used. Components for describing temporal reference systems are described in 14.4, but it is not required that the reference system be described in this, as the reference may refer to anything that may be indentified with a URI.  
+For time values using a calendar containing more than one era, the (optional) calendarEraName attribute provides the name of the calendar era.  
+Inexact temporal positions may be expressed using the optional indeterminatePosition attribute.  This takes a value from an enumeration.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="gml:TimePositionUnion">
+				<xs:attribute name="calendarEraName" use="optional" type="xs:string"/>
+				<xs:attribute name="frame" use="optional" default="#ISO-8601" type="gml:anyURI"/>
+				<xs:attribute name="indeterminatePosition" use="optional" type="gml:TimeIndeterminateValueType"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="TimePrimitivePropertyType" type="gml:TimePrimitivePropertyType"/>
+	<xs:complexType name="TimePrimitivePropertyType">
+		<xs:annotation>
+			<xs:documentation>gml:TimePrimitivePropertyType provides a standard content model for associations between an arbitrary member of the substitution group whose head is gml:AbstractTimePrimitive and another object.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="0">
+			<xs:element ref="gml:AbstractTimePrimitive" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<xs:attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</xs:complexType>
+	<xs:group name="timeLength">
+		<xs:annotation>
+			<xs:documentation>The length of a time period.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element ref="gml:duration" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="gml:timeInterval" minOccurs="1" maxOccurs="1"/>
+		</xs:choice>
+	</xs:group>
+</xs:schema>

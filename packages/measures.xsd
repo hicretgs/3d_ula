@@ -1,0 +1,92 @@
+<?xml  version='1.0' encoding='utf-8' ?>
+<xs:schema targetNamespace="http://www.opengis.net/gml/3.2" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" elementFormDefault="qualified" version="3.2.1.2">
+	<xs:annotation>
+		<xs:documentation>See ISO/DIS 19136 17.3.
+gml:MeasureType is defined in the basicTypes schema.  The measure types defined here correspond with a set of convenience measure types described in ISO/TS 19103.  The XML implementation is based on the XML Schema simple type "double" which supports both decimal and scientific notation, and includes an XML attribute "uom" which refers to the units of measure for the value.  Note that, there is no requirement to store values using any particular format, and applications receiving elements of this type may choose to coerce the data to any other type as convenient.
+
+GML is an OGC Standard.
+Copyright (c) 2007,2010 Open Geospatial Consortium.
+To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
+		</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="D:\BELGELER\Google Drive\hicretsurmeneli@gmail.com\Atatürk Üniversitesi\Makale çalışmaları\İsveç ortak makaler\1.Revizyon\EA cizimler xsd\gml\3.2.1.2\basicTypes.xsd"/>
+	<xs:element name="RelatedParty" type="gml:RelatedParty"/>
+	<xs:complexType name="RelatedParty">
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:element name="RepresentationValue" type="gml:RepresentationValue"/>
+	<xs:complexType name="RepresentationValue">
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:element name="StatusValue" type="gml:StatusValue"/>
+	<xs:complexType name="StatusValue">
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:element name="angle" type="gml:angle"/>
+	<xs:complexType name="angle">
+		<xs:complexContent>
+			<xs:extension base="gml:MeasureType">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="AreaType" type="gml:AreaType"/>
+	<xs:complexType name="AreaType">
+		<xs:complexContent>
+			<xs:extension base="gml:MeasureType">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="GridLengthType" type="gml:GridLengthType"/>
+	<xs:complexType name="GridLengthType">
+		<xs:complexContent>
+			<xs:extension base="gml:MeasureType">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="LengthType" type="gml:LengthType"/>
+	<xs:complexType name="LengthType">
+		<xs:annotation>
+			<xs:documentation>This is a prototypical definition for a specific measure type defined as a vacuous extension (i.e. aliases) of gml:MeasureType. In this case, the content model supports the description of a length (or distance) quantity, with its units. The unit of measure referenced by uom shall be suitable for a length, such as metres or feet.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="gml:MeasureType">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="ScaleType" type="gml:ScaleType"/>
+	<xs:complexType name="ScaleType">
+		<xs:complexContent>
+			<xs:extension base="gml:MeasureType">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="SpeedType" type="gml:SpeedType"/>
+	<xs:complexType name="SpeedType">
+		<xs:complexContent>
+			<xs:extension base="gml:MeasureType">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="TimeType" type="gml:TimeType"/>
+	<xs:complexType name="TimeType">
+		<xs:complexContent>
+			<xs:extension base="gml:MeasureType">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="VolumeType" type="gml:VolumeType"/>
+	<xs:complexType name="VolumeType">
+		<xs:complexContent>
+			<xs:extension base="gml:MeasureType">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,487 @@
+<?xml  version='1.0' encoding='utf-8' ?>
+<xs:schema targetNamespace="http://www.opengis.net/citygml/building/2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:gmlxbt="http://www.opengis.net/gml/3.3/xbt" elementFormDefault="qualified" version="2.0.0">
+	<xs:annotation>
+		<xs:documentation>&#xD;
+	CityGML is an OGC Standard.&#xD;
+	Copyright (c) 2012 Open Geospatial Consortium.&#xD;
+	To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .&#xD;
+		</xs:documentation>
+	</xs:annotation>
+	<xs:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="D:\BELGELER\Google Drive\hicretsurmeneli@gmail.com\Atatürk Üniversitesi\Makale çalışmaları\İsveç ortak makaler\1.Revizyon\EA cizimler xsd\gml\3.2.1.2\geometryBasic0d1d.xsd"/>
+	<xs:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="D:\BELGELER\Google Drive\hicretsurmeneli@gmail.com\Atatürk Üniversitesi\Makale çalışmaları\İsveç ortak makaler\1.Revizyon\EA cizimler xsd\gml\3.2.1.2\basicTypes.xsd"/>
+	<xs:import namespace="http://www.opengis.net/gml/3.3/xbt" schemaLocation="D:\BELGELER\Google Drive\hicretsurmeneli@gmail.com\Atatürk Üniversitesi\Makale çalışmaları\İsveç ortak makaler\1.Revizyon\EA cizimler xsd\gml\3.3.1\extdBaseTypes.xsd"/>
+	<xs:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="D:\BELGELER\Google Drive\hicretsurmeneli@gmail.com\Atatürk Üniversitesi\Makale çalışmaları\İsveç ortak makaler\1.Revizyon\EA cizimler xsd\gml\3.2.1.2\measures.xsd"/>
+	<xs:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="D:\BELGELER\Google Drive\hicretsurmeneli@gmail.com\Atatürk Üniversitesi\Makale çalışmaları\İsveç ortak makaler\1.Revizyon\EA cizimler xsd\gml\3.2.1.2\temporal.xsd"/>
+	<xs:import namespace="http://www.opengis.net/citygml/cityobjectgroup/1.0" schemaLocation="D:\BELGELER\Google Drive\hicretsurmeneli@gmail.com\Atatürk Üniversitesi\Makale çalışmaları\İsveç ortak makaler\1.Revizyon\EA cizimler xsd\ogc_citygml\cityObjectGroup.xsd"/>
+	<xs:import namespace="http://www.opengis.net/citygml/landuse/2.0" schemaLocation="D:\BELGELER\Google Drive\hicretsurmeneli@gmail.com\Atatürk Üniversitesi\Makale çalışmaları\İsveç ortak makaler\1.Revizyon\EA cizimler xsd\ogc_citygml\landuse\2.0\landUse.xsd"/>
+	<xs:import namespace="http://www.opengis.net/citygml/2.0" schemaLocation="D:\BELGELER\Google Drive\hicretsurmeneli@gmail.com\Atatürk Üniversitesi\Makale çalışmaları\İsveç ortak makaler\1.Revizyon\EA cizimler xsd\ogc_citygml\2.0\cityGMLBase.xsd"/>
+	<xs:element name="_AbstractBuilding" type="AbstractBuildingType"/>
+	<xs:element name="_BoundarySurface" type="AbstractBoundarySurfaceType"/>
+	<xs:element name="_Device" type="_Device"/>
+	<xs:complexType name="_Device">
+		<xs:complexContent>
+			<xs:extension base="AbstractFunctionalElement">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="_ProtectiveElement" type="_ProtectiveElement"/>
+	<xs:complexType name="_ProtectiveElement">
+		<xs:complexContent>
+			<xs:extension base="AbstractFunctionalElement">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="AbstractDistributionElement" type="AbstractDistributionElement"/>
+	<xs:complexType name="AbstractDistributionElement">
+		<xs:complexContent>
+			<xs:extension base="AbstractFunctionalElement">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="AbstractFunctionalElement" type="AbstractFunctionalElement"/>
+	<xs:complexType name="AbstractFunctionalElement">
+		<xs:complexContent>
+			<xs:extension base="Core::_AbstractNetworkFeature">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="AbstractMedium" type="AbstractMedium"/>
+	<xs:complexType name="AbstractMedium">
+		<xs:sequence>
+			<xs:element name="Core::_Network" type="Core::_Network" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AbstractSingleMedium" type="AbstractSingleMedium"/>
+	<xs:complexType name="AbstractSingleMedium">
+		<xs:complexContent>
+			<xs:extension base="AbstractMedium">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="ComplexFunctionalElement" type="ComplexFunctionalElement"/>
+	<xs:complexType name="ComplexFunctionalElement">
+		<xs:complexContent>
+			<xs:extension base="AbstractFunctionalElement">
+				<xs:sequence>
+					<xs:element name="AbstractFunctionalElement" type="AbstractFunctionalElement" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Core::_AbstractNetworkFeature" type="Core::_AbstractNetworkFeature"/>
+	<xs:complexType name="Core::_AbstractNetworkFeature" abstract="true">
+		<xs:sequence>
+			<xs:element name="BuildingID" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="CondominiumUnitID" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="dateOfConstruction" type="gml:dateTime" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="elevationQuality" type="gml:SpatialQualityValue" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="function" type="gml:FunctionValue" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="locationQuality" type="gml:SpatialQualityValue" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="measuremendLength" type="gml:LengthType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="parselID" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="relatedParty" type="gml:RelatedParty" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="status" type="gml:StatusValue" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="usage" type="gml:FunctionValue" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="UtilityID" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Core::_AbstractNetworkFeature" type="Core::_AbstractNetworkFeature" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Core::_Network" type="Core::_Network"/>
+	<xs:complexType name="Core::_Network">
+		<xs:sequence>
+			<xs:element name="BuildingID" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="class" type="NetworkClassValue" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="CondominiumUnitID" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="function" type="NetworkFunctionAndUsageValue" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="NetworkID" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="parselID" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="relatedParty" type="gml:RelatedParty" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="usage" type="NetworkFunctionAndUsageValue" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="UtilityID" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Core::_AbstractNetworkFeature" type="Core::_AbstractNetworkFeature" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Core::_Network" type="Core::_Network" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Core::_Network" type="Core::_Network" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="SupplyArea" type="SupplyArea" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Electric Communications" type="Electric Communications"/>
+	<xs:complexType name="Electric Communications">
+		<xs:complexContent>
+			<xs:extension base="NetworkGraph">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Electricity" type="Electricity"/>
+	<xs:complexType name="Electricity">
+		<xs:complexContent>
+			<xs:extension base="NetworkGraph">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="FeatureGraph" type="FeatureGraph"/>
+	<xs:complexType name="FeatureGraph">
+		<xs:complexContent>
+			<xs:extension base="Core::_AbstractNetworkFeature">
+				<xs:sequence>
+					<xs:element name="AbstractFunctionalElement" type="AbstractFunctionalElement" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Natural gas, oil, chemicals" type="Natural gas, oil, chemicals"/>
+	<xs:complexType name="Natural gas, oil, chemicals">
+		<xs:complexContent>
+			<xs:extension base="NetworkGraph">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="NetworkClassValue" type="NetworkClassValue"/>
+	<xs:complexType name="NetworkClassValue">
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:element name="NetworkClassValue" type="NetworkClassValue"/>
+	<xs:complexType name="NetworkClassValue">
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:element name="NetworkFunctionAndUsageValue" type="NetworkFunctionAndUsageValue"/>
+	<xs:complexType name="NetworkFunctionAndUsageValue">
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:element name="NetworkGraph" type="NetworkGraph"/>
+	<xs:complexType name="NetworkGraph">
+		<xs:complexContent>
+			<xs:extension base="Core::_Network">
+				<xs:sequence>
+					<xs:element name="representation" type="gml:RepresentationValue" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Parcel" type="Parcel"/>
+	<xs:complexType name="Parcel">
+		<xs:complexContent>
+			<xs:extension base="LandUse">
+				<xs:sequence>
+					<xs:element name="NetworkID" type="xs:int" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="ParcelArea" type="gmlxbt:decimal" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="ParcelID" type="xs:int" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="ParcelNo" type="gml:string" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="ParcelType" type="tr:ParcelType" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="UtilityID" type="xs:int" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="TR_Building" type="TR_Building" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="PhaseChangeMedium" type="PhaseChangeMedium"/>
+	<xs:complexType name="PhaseChangeMedium">
+		<xs:complexContent>
+			<xs:extension base="AbstractMedium">
+				<xs:sequence>
+					<xs:element name="AbstractSingleMedium" type="AbstractSingleMedium" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="SimpleFunctionalElement" type="SimpleFunctionalElement"/>
+	<xs:complexType name="SimpleFunctionalElement">
+		<xs:complexContent>
+			<xs:extension base="AbstractFunctionalElement">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="SupplyArea" type="SupplyArea"/>
+	<xs:complexType name="SupplyArea">
+		<xs:complexContent>
+			<xs:extension base="CityObjectGroup">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="TerminalElement" type="TerminalElement"/>
+	<xs:complexType name="TerminalElement">
+		<xs:complexContent>
+			<xs:extension base="AbstractFunctionalElement">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="TR_Annex" type="TR_Annex"/>
+	<xs:complexType name="TR_Annex">
+		<xs:complexContent>
+			<xs:extension base="TR_BuildingUsePart">
+				<xs:sequence>
+					<xs:element name="AnnexArea" type="xs:int" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="AnnexID" type="xs:int" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="AnnexNo" type="gml:string" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="CondominiumUnitID" type="xs:int" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="Height" type="gml:LengthType" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="TR_Building" type="TR_Building"/>
+	<xs:complexType name="TR_Building">
+		<xs:complexContent>
+			<xs:extension base="TR_BuildingUsePart">
+				<xs:sequence>
+					<xs:element name="BuildingID" type="xs:int" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="BuildingLicenseApprovalDate" type="gmlxbt:dateTime" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="BuildingUsagePermitDate" type="gmlxbt:dateTime" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="CarrierSystem" type="tr:CarrierSystemType" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="Description" type="gml:string" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="Document" type="tr:DocumentFormatType" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="MaterialOfWallsType" type="tr:MaterialOfWallsType" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="NetworkID" type="xs:int" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="SharedUseAreas" type="tr:SharedAreasType" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="TotalConstructionArea" type="gmlxbt:decimal" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="TotalSharedAreas" type="gmlxbt:decimal" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="UrbanEquipmentType" type="tr:UrbanEquipmentType" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="UtilityID" type="xs:int" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="YearOfRedevelopmentDate" type="gmlxbt:dateTime" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="TR_Annex" type="TR_Annex" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="TR_BuildingUsePart" type="TR_BuildingUsePart"/>
+	<xs:complexType name="TR_BuildingUsePart">
+		<xs:sequence>
+			<xs:element name="AnnexID" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="BuildingID" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="BuildingUsePartType" type="gml:CodeType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="NetworkID" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="UtilityID" type="xs:int" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="TR_CondominiumUnit" type="TR_CondominiumUnit"/>
+	<xs:complexType name="TR_CondominiumUnit">
+		<xs:complexContent>
+			<xs:extension base="TR_Building">
+				<xs:sequence>
+					<xs:element name="BuildingID" type="xs:int" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="CondominiumUnitArea" type="gmlxbt:decimal" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="CondominiumUnitID" type="xs:int" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="CondominiumUnitNumber" type="gml:string" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="FloorNumber" type="gml:string" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="GrossArea" type="gmlxbt:decimal" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="Height" type="gml:LengthType" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="NetArea" type="gmlxbt:decimal" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="NetworkID" type="xs:int" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="UtilityID" type="xs:int" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="TR_PhysicalObject" type="TR_PhysicalObject"/>
+	<xs:complexType name="TR_PhysicalObject">
+		<xs:sequence>
+			<xs:element name="BuildingID" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="BuildingUnitID" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="CityObjectID" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ParcelID" type="xs:int" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="WaterandWatewater" type="WaterandWatewater"/>
+	<xs:complexType name="WaterandWatewater">
+		<xs:complexContent>
+			<xs:extension base="NetworkGraph">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="AbstractBoundarySurfaceType" type="AbstractBoundarySurfaceType"/>
+	<xs:complexType name="AbstractBoundarySurfaceType" abstract="true">
+		<xs:annotation>
+			<xs:documentation>A BoundarySurface is a thematic object which classifies surfaces bounding an _AbstractBuilding, Room,&#xD;
+				BuildingInstallation, and IntBuildingInstallation. The geometry of a BoundarySurface is given by MultiSurfaces. As it is a&#xD;
+				subclass of _CityObject, it inherits all atributes and relations, in particular the external references, and the&#xD;
+				generalization relations. </xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="core:AbstractCityObjectType">
+				<xs:sequence>
+					<xs:element name="lod2MultiSurface" type="gml:MultiSurfacePropertyType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="lod3MultiSurface" type="gml:MultiSurfacePropertyType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="lod4MultiSurface" type="gml:MultiSurfacePropertyType" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="AbstractBuildingType" type="AbstractBuildingType"/>
+	<xs:complexType name="AbstractBuildingType" abstract="true">
+		<xs:annotation>
+			<xs:documentation>Type describing the thematic and geometric attributes and the associations of buildings. It is an abstract&#xD;
+				type, only its subclasses Building and BuildingPart can be instantiated. An _AbstractBuilding may consist of&#xD;
+				BuildingParts, which are again _AbstractBuildings by inheritance. Thus an aggregation hierarchy between _AbstractBuildings&#xD;
+				of arbitrary depth may be specified. In such an hierarchy, top elements are Buildings, while all other elements are&#xD;
+				BuildingParts. Each element of such a hierarchy may have all attributes and geometries of _AbstractBuildings. It must,&#xD;
+				however, be assured than no inconsistencies occur (for example, if the geometry of a Building does not correspond to the&#xD;
+				geometries of its parts, or if the roof type of a Building is saddle roof, while its parts have an hip roof). As subclass&#xD;
+				of _CityObject, an _AbstractBuilding inherits all attributes and relations, in particular an id, names, external&#xD;
+				references, and generalization relations. </xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="core:AbstractSiteType">
+				<xs:sequence>
+					<xs:element name="address" type="core:AddressPropertyType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="class" type="gml:CodeType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="function" type="gml:CodeType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="lod0FootPrint" type="gml:MultiSurfacePropertyType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="lod0RoofEdge" type="gml:MultiSurfacePropertyType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="lod1MultiSurface" type="gml:MultiSurfacePropertyType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="lod1Solid" type="gml:SolidPropertyType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="lod1TerrainIntersection" type="gml:MultiCurvePropertyType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="lod2MultiCurve" type="gml:MultiCurvePropertyType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="lod2MultiSurface" type="gml:MultiSurfacePropertyType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="lod2Solid" type="gml:SolidPropertyType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="lod2TerrainIntersection" type="gml:MultiCurvePropertyType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="lod3MultiCurve" type="gml:MultiCurvePropertyType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="lod3MultiSurface" type="gml:MultiSurfacePropertyType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="lod3Solid" type="gml:SolidPropertyType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="lod3TerrainIntersection" type="gml:MultiCurvePropertyType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="lod4MultiCurve" type="gml:MultiCurvePropertyType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="lod4MultiSurface" type="gml:MultiSurfacePropertyType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="lod4Solid" type="gml:SolidPropertyType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="lod4TerrainIntersection" type="gml:MultiCurvePropertyType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="measuredHeight" type="gml:LengthType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="roofType" type="gml:CodeType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="storeyHeightsAboveGround" type="gml:MeasureOrNullListType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="storeyHeightsBelowGround" type="gml:MeasureOrNullListType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="storeysAboveGround" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="storeysBelowGround" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="usage" type="gml:CodeType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="yearOfConstruction" type="gml:dateTime" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="yearOfDemolition" type="gmlxbt:dateTime" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="boundedBy" type="BoundarySurfacePropertyType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="outerBuildingInstallation" type="BuildingInstallationPropertyType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="consistsOfBuildingPart" type="BuildingPartPropertyType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="interiorBuildingInstallation" type="IntBuildingInstallationPropertyType" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="BoundarySurfacePropertyType" type="BoundarySurfacePropertyType"/>
+	<xs:complexType name="BoundarySurfacePropertyType">
+		<xs:annotation>
+			<xs:documentation>Denotes the relation of an _AbstractBuilding to its bounding thematic surfaces (walls, roofs, ..). The&#xD;
+				BoundarySurfacePropertyType element must either carry a reference to a _BoundarySurface object or contain a&#xD;
+				_BoundarySurface object inline, but neither both nor none. There is no differentiation between interior surfaces bounding&#xD;
+				rooms and outer ones bounding buildings (one reason is, that ClosureSurface belongs to both types). It has to be made sure&#xD;
+				by additional integrity constraints that, e.g. an _AbstractBuilding is not related to CeilingSurfaces or a room not to&#xD;
+				RoofSurfaces. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="0">
+			<xs:element ref="_BoundarySurface" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Building" type="Building"/>
+	<xs:complexType name="Building">
+		<xs:complexContent>
+			<xs:extension base="AbstractBuildingType">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="BuildingFurniture" type="BuildingFurniture"/>
+	<xs:complexType name="BuildingFurniture">
+		<xs:annotation>
+			<xs:documentation>Type for building furnitures. As subclass of _CityObject, a BuildingFurniture inherits all attributes and&#xD;
+				relations, in particular an id, names, external references, and generalization relations. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="class" type="gml:CodeType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="function" type="gml:CodeType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="lod4Geometry" type="gml:GeometryPropertyType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="lod4ImplicitRepresentation" type="core:ImplicitRepresentationPropertyType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="usage" type="gml:CodeType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="BuildingInstallation" type="BuildingInstallation"/>
+	<xs:complexType name="BuildingInstallation">
+		<xs:annotation>
+			<xs:documentation>A BuildingInstallation is a part of a Building which has not the significance of a BuildingPart. Examples&#xD;
+				are stairs, antennas, balconies or small roofs. As subclass of _CityObject, a BuildingInstallation inherits all attributes&#xD;
+				and relations, in particular an id, names, external references, and generalization relations. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="class" type="gml:CodeType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="function" type="gml:CodeType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="lod2Geometry" type="gml:GeometryPropertyType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="lod2ImplicitRepresentation" type="core:ImplicitRepresentationPropertyType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="lod3Geometry" type="gml:GeometryPropertyType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="lod3ImplicitRepresentation" type="core:ImplicitRepresentationPropertyType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="lod4Geometry" type="gml:GeometryPropertyType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="lod4ImplicitRepresentation" type="core:ImplicitRepresentationPropertyType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="usage" type="gml:CodeType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="boundedBy" type="BoundarySurfacePropertyType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="BuildingInstallationPropertyType" type="BuildingInstallationPropertyType"/>
+	<xs:complexType name="BuildingInstallationPropertyType">
+		<xs:annotation>
+			<xs:documentation>Denotes the relation of an _AbstractBuilding to its building installations. The&#xD;
+				BuildingInstallationPropertyType element must either carry a reference to a BuildingInstallation object or contain a&#xD;
+				BuildingInstallation object inline, but neither both nor none. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="0">
+			<xs:element ref="BuildingInstallation" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="BuildingPart" type="BuildingPart"/>
+	<xs:complexType name="BuildingPart">
+		<xs:complexContent>
+			<xs:extension base="AbstractBuildingType">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="BuildingPartPropertyType" type="BuildingPartPropertyType"/>
+	<xs:complexType name="BuildingPartPropertyType">
+		<xs:annotation>
+			<xs:documentation>Denotes the relation of an _AbstractBuilding to its building parts. The BuildingPartPropertyType element&#xD;
+				must either carry a reference to a BuildingPart object or contain a BuildingPart object inline, but neither both nor&#xD;
+				none.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="0">
+			<xs:element ref="BuildingPart" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="IntBuildingInstallation" type="IntBuildingInstallation"/>
+	<xs:complexType name="IntBuildingInstallation">
+		<xs:annotation>
+			<xs:documentation>An IntBuildingInstallation is an interior part of a Building which has a specific function or semantical&#xD;
+				meaning. Examples are interior stairs, railings, radiators or pipes. As subclass of _CityObject, a&#xD;
+				nIntBuildingInstallation inherits all attributes and relations, in particular an id, names, external references, and&#xD;
+				generalization relations. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="class" type="gml:CodeType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="function" type="gml:CodeType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="lod4Geometry" type="gml:GeometryPropertyType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="lod4ImplicitRepresentation" type="core:ImplicitRepresentationPropertyType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="usage" type="gml:CodeType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="boundedBy" type="BoundarySurfacePropertyType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="IntBuildingInstallationPropertyType" type="IntBuildingInstallationPropertyType"/>
+	<xs:complexType name="IntBuildingInstallationPropertyType">
+		<xs:annotation>
+			<xs:documentation>Denotes the relation of an _AbstractBuilding to its interior building installations. The&#xD;
+				IntBuildingInstallationPropertyType element must either carry a reference to a IntBuildingInstallation object or contain a&#xD;
+				IntBuildingInstallation object inline, but neither both nor none. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="0">
+			<xs:element ref="IntBuildingInstallation" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

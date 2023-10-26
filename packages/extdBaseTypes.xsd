@@ -1,0 +1,88 @@
+<?xml  version='1.0' encoding='utf-8' ?>
+<xs:schema targetNamespace="http://www.opengis.net/gml/3.3/xbt" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gmlxbt="http://www.opengis.net/gml/3.3/xbt" xmlns:xlink="http://www.w3.org/1999/xlink" elementFormDefault="qualified" version="3.3.1">
+	<xs:annotation>
+		<xs:documentation>extdBasicTypes.xsd, part of GML 3.3. Copyright (c) [2011,2018] Open Geospatial Consortium, Inc. To obtain additional rights of use, visit http://www.opengeospatial.org/legal/.</xs:documentation>
+	</xs:annotation>
+	<xs:element name="description" type="gmlxbt:LanguageStringAuxType">
+		<xs:annotation>
+			<xs:documentation>The value of this property is a text description of the object with optional xml:lang attribute.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="remarks" type="gmlxbt:LanguageStringType">
+		<xs:annotation>
+			<xs:documentation>The value of this property is a text description of the object with optional xml:lang attribute.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="anyURI">
+		<xs:restriction base="xs:anyURI"/>
+	</xs:simpleType>
+	<xs:simpleType name="dateTime">
+		<xs:restriction base="xs:dateTime"/>
+	</xs:simpleType>
+	<xs:simpleType name="decimal">
+		<xs:restriction base="xs:decimal"/>
+	</xs:simpleType>
+	<xs:simpleType name="OrdDate">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="-?[0-9]{4}-[0-9]{3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="string">
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	<xs:simpleType name="time">
+		<xs:restriction base="xs:time"/>
+	</xs:simpleType>
+	<xs:simpleType name="TimePositionUnion">
+		<xs:union memberTypes="gmlxbt:anyURI gmlxbt:dateTime gmlxbt:decimal gmlxbt:time gml:CalDate OrdDate WeekDate"/>
+	</xs:simpleType>
+	<xs:simpleType name="WeekDate">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="-?[0-9]{4}-W(0[1-9]|[1-4][0-9]|5[0-3])(-[1-7])?"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="CodeType" type="gmlxbt:CodeType"/>
+	<xs:complexType name="CodeType">
+		<xs:annotation>
+			<xs:documentation>gmlxbt:CodeType is a generalized type to be used for a term, keyword or name. It adds a XML attribute codeSpace to a term, where the value of the codeSpace attribute (if present) shall indicate a dictionary, thesaurus, classification scheme, authority, or pattern for the term.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="gmlxbt:LanguageStringType">
+				<xs:sequence/>
+				<xs:attribute name="codeSpace" use="optional" type="gmlxbt:anyURI"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="CodeWithAuthorityType" type="gmlxbt:CodeWithAuthorityType"/>
+	<xs:complexType name="CodeWithAuthorityType">
+		<xs:annotation>
+			<xs:documentation>gmlxbt:CodeWithAuthorityType requires that the codeSpace attribute is provided in an instance.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="gmlxbt:CodeType">
+				<xs:sequence/>
+				<xs:attribute name="codeSpace" use="required" type="gmlxbt:anyURI"/>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="LanguageStringAuxType" type="gmlxbt:LanguageStringAuxType"/>
+	<xs:complexType name="LanguageStringAuxType">
+		<xs:simpleContent>
+			<xs:extension base="gml:StringOrRefType">
+				<xs:sequence/>
+				<xs:attribute name="ext_ref_2" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="LanguageStringType" type="gmlxbt:LanguageStringType"/>
+	<xs:complexType name="LanguageStringType">
+		<xs:annotation>
+			<xs:documentation>gmlxbt:LanguageStringType adds an optional xml:lang attribute to xs:string for the use within the GML schema and in GML application schemas.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="gmlxbt:string">
+				<xs:attribute name="ext_ref_1" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+</xs:schema>
