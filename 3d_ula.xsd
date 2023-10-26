@@ -7,14 +7,14 @@
 	To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .&#xD;
 		</xs:documentation>
 	</xs:annotation>
-	<xs:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="D:\BELGELER\Google Drive\hicretsurmeneli@gmail.com\Atatürk Üniversitesi\Makale çalışmaları\İsveç ortak makaler\1.Revizyon\EA cizimler xsd\gml\3.2.1.2\geometryBasic0d1d.xsd"/>
-	<xs:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="D:\BELGELER\Google Drive\hicretsurmeneli@gmail.com\Atatürk Üniversitesi\Makale çalışmaları\İsveç ortak makaler\1.Revizyon\EA cizimler xsd\gml\3.2.1.2\basicTypes.xsd"/>
-	<xs:import namespace="http://www.opengis.net/gml/3.3/xbt" schemaLocation="D:\BELGELER\Google Drive\hicretsurmeneli@gmail.com\Atatürk Üniversitesi\Makale çalışmaları\İsveç ortak makaler\1.Revizyon\EA cizimler xsd\gml\3.3.1\extdBaseTypes.xsd"/>
-	<xs:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="D:\BELGELER\Google Drive\hicretsurmeneli@gmail.com\Atatürk Üniversitesi\Makale çalışmaları\İsveç ortak makaler\1.Revizyon\EA cizimler xsd\gml\3.2.1.2\measures.xsd"/>
-	<xs:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="D:\BELGELER\Google Drive\hicretsurmeneli@gmail.com\Atatürk Üniversitesi\Makale çalışmaları\İsveç ortak makaler\1.Revizyon\EA cizimler xsd\gml\3.2.1.2\temporal.xsd"/>
-	<xs:import namespace="http://www.opengis.net/citygml/cityobjectgroup/1.0" schemaLocation="D:\BELGELER\Google Drive\hicretsurmeneli@gmail.com\Atatürk Üniversitesi\Makale çalışmaları\İsveç ortak makaler\1.Revizyon\EA cizimler xsd\ogc_citygml\cityObjectGroup.xsd"/>
-	<xs:import namespace="http://www.opengis.net/citygml/landuse/2.0" schemaLocation="D:\BELGELER\Google Drive\hicretsurmeneli@gmail.com\Atatürk Üniversitesi\Makale çalışmaları\İsveç ortak makaler\1.Revizyon\EA cizimler xsd\ogc_citygml\landuse\2.0\landUse.xsd"/>
-	<xs:import namespace="http://www.opengis.net/citygml/2.0" schemaLocation="D:\BELGELER\Google Drive\hicretsurmeneli@gmail.com\Atatürk Üniversitesi\Makale çalışmaları\İsveç ortak makaler\1.Revizyon\EA cizimler xsd\ogc_citygml\2.0\cityGMLBase.xsd"/>
+	<xs:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="./packages/geometryBasic0d1d.xsd"/>
+	<xs:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="./packages/basicTypes.xsd"/>
+	<xs:import namespace="http://www.opengis.net/gml/3.3/xbt" schemaLocation="./packages/extdBaseTypes.xsd"/>
+	<xs:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="./packages/measures.xsd"/>
+	<xs:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="./packages/temporal.xsd"/>
+	<xs:import namespace="http://www.opengis.net/citygml/cityobjectgroup/1.0" schemaLocation="./packages/cityObjectGroup.xsd"/>
+	<xs:import namespace="http://www.opengis.net/citygml/landuse/2.0" schemaLocation="./packages/landUse.xsd"/>
+	<xs:import namespace="http://www.opengis.net/citygml/2.0" schemaLocation="./packages/cityGMLBase.xsd"/>
 	<xs:element name="_AbstractBuilding" type="AbstractBuildingType"/>
 	<xs:element name="_BoundarySurface" type="AbstractBoundarySurfaceType"/>
 	<xs:element name="_Device" type="_Device"/>
